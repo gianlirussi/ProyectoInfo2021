@@ -1,0 +1,79 @@
+{% block body %}
+<html>
+    <head>
+        <title>Preguntas Chaco</title>
+    </head>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <body>
+<style>body {
+  background-image: url(../static/bandera.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+#contenido{
+            width: 90%;
+            margin: 0px auto;
+}
+#preguntas{
+           front-family: Arial;
+           text-align: center;
+           margin: 0px auto;
+           background: #ffffff;
+           font-weight: normal;
+           font-weight: 900;
+}
+
+</style>
+<nav class="navbar navbar-dark bg-primary p-1">
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active text-white h4"  aria-current="page" href="/">Pagina de Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white h4" href="/juego/noticias">Info del Chaco</a>
+  </li>
+</ul>
+    <ul class="nav justify-content_end">
+    <li class="nav-item" float="right">
+    <img src="../static/2logochaco.png" alt="2logochaco.png" width="105" height="75" >
+  </li>
+</nav>
+
+<p class="h1 m-3" align="center">¡Empezemos!</p>
+<div align="center"><o class="form-label h6 m-2">Trata de responder la mayor cantidad de preguntas correctamente</o></div>
+
+<div class="nav justify-content-md-center p-5" id="contenido">
+    <form action="" method="POST">
+    {% csrf_token %}
+        {% for key,value in data.items%}
+        <p class="h5 m-1"> {% if value.categoria.categoria == 'Historia' %}</p>
+        <div align="center" class="alert alert-warning col-lg-11" role="alert">{{value.categoria}}</div>
+        <p class="h5 m-1">{% elif value.categoria.categoria == 'Deporte' %}</p>
+         <div align="center" class="alert alert-info col-lg-11" role="alert">{{value.categoria}}</div>
+        <p class="h5 m-1">{% elif value.categoria.categoria == 'Cultura y Arte' %}</p>
+        <div align="center" class="alert alert-success col-lg-11" role="alert">{{value.categoria}}</div>
+        <p class="h5 m-1"> {% elif value.categoria.categoria == 'Economia' %}</p>
+        <div align="center" class="alert alert-primary col-lg-11" role="alert">{{value.categoria}}</div>
+        <p class="h5 m-1"> {% else %}</p>
+        <div align="center" class="alert alert-danger col-lg-11" role="alert">{{value.categoria}}</div>
+        {% endif %}
+        <div align="center"> <p class="h6 m-1" id="preguntas">{{key}}</p> <br></div>
+                <select name="{{forloop.counter}}">
+                {% for opcion in value.opciones %}
+                    <option value="{{opcion.id}}">{{opcion.opcion}}</option>
+            {% endfor %}
+            </select>
+
+        <br><br>
+        {% endfor %}
+        <div align="center"><button class="btn btn-primary" type="submit" >Enviar</button></div>
+    </form>
+    </div>
+{% endblock%}
+
+</body>
+</html>
+

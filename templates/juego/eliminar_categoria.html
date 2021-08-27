@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Eliminar Categoria</title>
+    </head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+<body>
+<style>body {
+  background-image: url(../static/trabajo.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+<nav class="navbar navbar-dark bg-primary p-1">
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active text-white h4"  aria-current="page" href="/">Pagina Principal</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-white h4"  aria-current="page" href="/juego/respuestas">Lista de Respuestas</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link active text-white h4"  aria-current="page" href="/juego/preguntas">Lista de Preguntas</a>
+  </li>
+</ul>
+</nav>
+<p class="h1 m-3" align="center">Eliminar Categoria</p>
+
+{% block body %}
+<h2>Detalle de Categoria a eliminar</h2><br>
+<p class="h5 m-1">Categoria: {{categoria.categoria}}</p>
+    <br>
+<p class="h5 m-1">Descripcion : {{categoria.descripcion}}</p>
+
+<a class="btn btn-danger" href="{% url 'juego:detalle_categoria' categoria.pk %}">Cancelar</a>
+<a class="btn btn-success" href="{% url 'juego:confirmar_eliminaciion' categoria.pk %}">Confirmar</a>
+
+{% endblock %}
