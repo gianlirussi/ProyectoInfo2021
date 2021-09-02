@@ -196,7 +196,7 @@ def crear_categoria(request):
 def editar_categoria(request, identificador):
     categoria= Categoria.objects.get(pk=identificador)
     if request.method == "POST":
-        form = CategoriaForm(request.POST, instance=respuesta)
+        form = CategoriaForm(request.POST, instance=categoria)
         if form.is_valid():
             item = form.save(commit=False)
             item.autor = request.user
