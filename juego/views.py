@@ -231,3 +231,4 @@ def partidas(request):
     return render(request, "juego/partidas.html", {"partidas": partidas})
 
 
+
