@@ -14,13 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_DIR = os.path.join(BASE_DIR,"static")
-
-import os
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+STATIC_DIR = os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -31,7 +26,7 @@ SECRET_KEY = 'django-insecure-i1!*=uek7_o9@^(b+5ewo_fnsjnv81-w4l9e52ms=ss&tqm2k9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['proyectoinfo21.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['juegochaco2021.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -92,7 +87,6 @@ import dj_database_url
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
