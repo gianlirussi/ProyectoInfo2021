@@ -230,5 +230,3 @@ def partidas(request):
     partidas = Partida.objects.all().order_by('-fecha')[:5]
     return render(request, "juego/partidas.html", {"partidas": partidas})
 
-
-
